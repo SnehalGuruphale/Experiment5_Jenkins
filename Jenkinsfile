@@ -2,29 +2,23 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone') {
-            steps {
-                echo "Cloning the repository..."
-                git 'https://github.com/SnehalGuruphale/exp5_Jenkins.git'
-            }
-        }
-
         stage('Build') {
             steps {
-                echo "Build step for static website - nothing to compile"
+                echo "Build step for static website"
+                bat 'dir'
             }
         }
 
         stage('Test') {
             steps {
-                echo "Testing if index.html exists"
+                echo "Checking index.html"
                 bat 'dir index.html'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo "Deploying website to Jenkins workspace"
+                echo "Website deployed to Jenkins workspace"
             }
         }
     }
