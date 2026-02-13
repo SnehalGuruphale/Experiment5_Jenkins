@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Build step for static website"
+                echo "Build step"
                 bat 'dir'
             }
         }
@@ -18,7 +18,12 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo "Website deployed to Jenkins workspace"
+                echo "Publishing HTML report in Jenkins"
+                publishHTML([
+                    reportDir: '.',
+                    reportFiles: 'index.html',
+                    reportName: 'My Website Output'
+                ])
             }
         }
     }
